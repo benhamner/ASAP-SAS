@@ -1,3 +1,4 @@
+import nltk
 
 def train_bag(text, n=50):
     words = [w for w in text.lower().split(" ") if w]
