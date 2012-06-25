@@ -1,6 +1,4 @@
-import nltk
-
-def train_bag(text, n=50):
+def train_bag(text, n=500):
     words = [w for w in text.lower().split(" ") if w]
     word_counts = {}
     for w in words:
