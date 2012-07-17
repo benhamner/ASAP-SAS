@@ -1,3 +1,11 @@
+import itertools
+import re
+
+def generate_letters(num_letters):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    letters = ["".join(x) for x in itertools.product(alphabet, repeat=num_letters)]
+    return letters
+
 def train_bag(text, n=500):
     words = [w for w in text.lower().split(" ") if w]
     word_counts = {}
@@ -11,3 +19,6 @@ def train_bag(text, n=500):
 
 def bag_representation(bag, text):
     return [float(w in text) for w in bag]
+
+def bag_count_representation(bag, text):
+    return [float(len(re.findall(w, text))) for w in bag]

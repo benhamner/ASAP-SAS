@@ -24,7 +24,7 @@ def main():
         rf = RandomForestRegressor(n_estimators = 50)
         rf.fit(features,[float(x["Score1"]) for x in train])
 
-        test = list(cio.essays_by_set(essay_set, "../Data/public_leaderboard.tsv"))
+        test = list(cio.essays_by_set(essay_set, "../Data/public_leaderboard_rel_2.tsv"))
         features = extract_features([x["EssayText"] for x in test], feature_functions)
         predicted_scores = rf.predict(features)
         for essay_id, pred_score in zip([x["Id"] for x in test], predicted_scores):

@@ -16,13 +16,13 @@ def main():
         rf = RandomForestRegressor(n_estimators = 50)
         rf.fit(fea,[float(x["Score1"]) for x in train])
 
-        test = list(cio.essays_by_set(essay_set, "../Data/public_leaderboard.tsv"))
+        test = list(cio.essays_by_set(essay_set, "../Data/public_leaderboard_rel_2.tsv"))
         fea = [features.bag_representation(bag, x["EssayText"]) for x in test]
         predicted_scores = rf.predict(fea)
         for essay_id, pred_score in zip([x["Id"] for x in test], predicted_scores):
             predictions[essay_id] = round(pred_score)
     
-    output_file = "../Submissions/bag_benchmark.csv"
+    output_file = "../Submissions/bag_of_words_benchmark.csv"
     print("Writing submission to %s" % output_file)
     f = open(output_file, "w")
     f.write("id,essay_score\n")

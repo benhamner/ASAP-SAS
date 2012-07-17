@@ -2,14 +2,14 @@
 
 import csv
 
-def get_essay_sets(filename = "../Data/train.tsv"):
+def get_essay_sets(filename = "../Data/train_rel_2.tsv"):
     return sorted(set(x["EssaySet"] for x in essay_reader(filename)))
 
 def essays_by_set(essay_set, filename = "../Data/train.tsv"):
     return (essay for essay in essay_reader(filename)
             if essay["EssaySet"]==essay_set)
 
-def essay_reader(filename = "../Data/train.tsv"):
+def essay_reader(filename = "../Data/train_rel_2.tsv"):
     f = open(filename)
     reader = csv.reader(f, delimiter = '\t')
     header = reader.next()
