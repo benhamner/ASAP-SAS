@@ -5,7 +5,7 @@ import csv
 def get_essay_sets(filename = "../Data/train_rel_2.tsv"):
     return sorted(set(x["EssaySet"] for x in essay_reader(filename)))
 
-def essays_by_set(essay_set, filename = "../Data/train.tsv"):
+def essays_by_set(essay_set, filename = "../Data/train_rel_2.tsv"):
     return (essay for essay in essay_reader(filename)
             if essay["EssaySet"]==essay_set)
 
